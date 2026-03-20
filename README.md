@@ -127,7 +127,7 @@ The application follows a **Three-Tier Architecture** to ensure separation of co
     </td>
     <td align="center">
       <a href="https://github.com/kartikjadon7">
-        <img src="https://github.com/kartik.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
+        <img src="https://github.com/kartikjadon7.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
         <br/>
         <sub><b>kartik</b></sub>
         <br/>
