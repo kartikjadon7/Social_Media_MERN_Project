@@ -103,4 +103,69 @@ The application follows a **Three-Tier Architecture** to ensure separation of co
 * [Express.js Guide](https://expressjs.com)
 
 ---
+
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/kartikjadon7">
+        <img src="https://github.com/kartikjadon7.png" width="80" height="80" style="border-radius: 50%;" alt="Kartik">
+        <br/>
+        <sub><b>Kartik</b></sub>
+        <br/>
+        <sub>@kartikjadon7</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/kartikjadon7">
+        <img src="https://github.com/kartikjadon7.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
+        <br/>
+        <sub><b>kartik</b></sub>
+        <br/>
+        <sub>@kartikjadon7</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/kartikjadon7">
+        <img src="https://github.com/kartik.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
+        <br/>
+        <sub><b>kartik</b></sub>
+        <br/>
+        <sub>@kartikjadon7</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/kartikjadon7">
+        <img src="https://github.com/kartikjadon7.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
+        <br/>
+        <sub><b>kartik</b></sub>
+        <br/>
+        <sub>@kartikjadon7</sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/kartikjadon7">
+        <img src="https://github.com/kartikjadon7.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
+        <br/>
+        <sub><b>Kartik</b></sub>
+        <br/>
+        <sub>@kartikjadon7</sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+<br/>
+
+<div align="center">
+
+**MiniProject Team —kartikjadon7@gmail.com**
+
+
+---
+
+</div>
+
+
+
 *Developed for the Department of Computer Engineering, GLA University, Mathura.*
