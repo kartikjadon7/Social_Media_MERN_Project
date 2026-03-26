@@ -144,12 +144,12 @@ The application follows a **Three-Tier Architecture** to ensure separation of co
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/kartikjadon7">
-        <img src="https://github.com/kartikjadon7.png" width="80" height="80" style="border-radius: 50%;" alt="kartik">
+      <a href="https://github.com/jatinkantsharma-del">
+        <img src="https://github.com/jatinkantsharma-del.png" width="80" height="80" style="border-radius: 50%;" alt="JatinkantSharma">
         <br/>
-        <sub><b>Kartik</b></sub>
+        <sub><b>JatinkantSharma</b></sub>
         <br/>
-        <sub>@kartikjadon7</sub>
+        <sub>@jatinkantsharma-del</sub>
       </a>
     </td>
   </tr>
