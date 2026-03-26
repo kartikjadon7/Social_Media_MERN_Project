@@ -127,7 +127,7 @@ The application follows a **Three-Tier Architecture** to ensure separation of co
     </td>
     <td align="center">
       <a href="https://github.com/Nailbitter">
-        <img src="https://github.com/Nailbitter.png" width="80" height="80" style="border-radius: 10%;" alt="KartikeyGupta">
+        <img src="https://github.com/Nailbitter.png" width="80" height="80" style="border-radius: 100%;" alt="KartikeyGupta">
         <br/>
         <sub><b>KartikeyGupta</b></sub>
         <br/>
