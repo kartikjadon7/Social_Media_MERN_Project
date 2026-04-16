@@ -32,6 +32,10 @@ app.get("/api/test", (req, res) => {
   res.send("Backend is working ");
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Social Media API 🚀");
+});
+
 // ✅ MongoDB (improved error handling only)
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
