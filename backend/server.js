@@ -1,19 +1,16 @@
-require("dotenv").config(); // moved to top
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 
 const app = express();
 
-// ✅ Middleware FIRST
+// ✅ Middleware
 app.use(express.json());
 
-// ✅ CORS (same as yours, no change)
 app.use(cors({
   origin: "*",
-  credentials: true
 }));
 
 // ✅ Routes
@@ -27,39 +24,49 @@ app.use("/api/users", users);
 app.use("/api/comments", comments);
 app.use("/api/messages", messages);
 
-// ✅ Test route
+// ✅ Test routes
 app.get("/api/test", (req, res) => {
-  res.send("Backend is working ");
+  res.send("Backend is working");
 });
 
 app.get("/", (req, res) => {
   res.send("Welcome to Social Media API 🚀");
 });
 
-// ✅ MongoDB (improved error handling only)
+// ✅ MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch(err => {
-    console.log("MongoDB connection error:");
-    console.log(err.message);
-  });
+  .catch(err => console.log(err.message));
 
-// ✅ Socket Setup
+// ✅ Create HTTP server
 const httpServer = require("http").createServer(app);
+
+// ✅ Socket.IO
 const { authSocket, socketServer } = require("./socketServer");
 
 const io = require("socket.io")(httpServer, {
   cors: {
     origin: "*",
+    methods: ["GET", "POST"],
   },
+  transports: ["websocket", "polling"],
 });
 
+// 🔐 Auth middleware
 io.use(authSocket);
-io.on("connection", (socket) => socketServer(socket));
 
+// 🔌 Connection
+io.on("connection", (socket) => {
+  console.log("Socket connected:", socket.id);
 
+  socketServer(socket);
 
-// ✅ Start server LAST
+  socket.on("disconnect", () => {
+    console.log("Socket disconnected:", socket.id);
+  });
+});
+
+// ✅ Start server
 const PORT = process.env.PORT || 4000;
 
 httpServer.listen(PORT, () => {
