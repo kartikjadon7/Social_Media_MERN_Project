@@ -83,7 +83,13 @@ const SignupView = () => {
           Sign Up
         </Typography>
         <Typography color="text.secondary">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account?{" "}
+          <span
+            onClick={() => window.location.href = "/login"}
+            style={{ cursor: "pointer", textDecoration: "underline", color: "inherit" }}
+          >
+            Login
+          </span>
         </Typography>
         <Box component="form" onSubmit={handleSubmit}>
           <TextField
