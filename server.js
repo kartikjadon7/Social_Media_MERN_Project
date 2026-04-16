@@ -1,18 +1,18 @@
+require("dotenv").config(); // moved to top
+
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
 
 const app = express();
-dotenv.config();
 
 // ✅ Middleware FIRST
 app.use(express.json());
 
-// ✅ CORS FIX (important)
+// ✅ CORS (same as yours, no change)
 app.use(cors({
-  origin: "*",  // later replace with your Vercel URL
+  origin: "*",
   credentials: true
 }));
 
@@ -27,15 +27,18 @@ app.use("/api/users", users);
 app.use("/api/comments", comments);
 app.use("/api/messages", messages);
 
-// ✅ Test route (for debugging)
+// ✅ Test route
 app.get("/api/test", (req, res) => {
-  res.send("Backend is working 🚀");
+  res.send("Backend is working ");
 });
 
-// ✅ MongoDB
+// ✅ MongoDB (improved error handling only)
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.log(err));
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => {
+    console.log("MongoDB connection error:");
+    console.log(err.message);
+  });
 
 // ✅ Socket Setup
 const httpServer = require("http").createServer(app);
@@ -43,7 +46,7 @@ const { authSocket, socketServer } = require("./socketServer");
 
 const io = require("socket.io")(httpServer, {
   cors: {
-    origin: "*",   // allow all for now
+    origin: "*",
   },
 });
 
@@ -51,13 +54,6 @@ io.use(authSocket);
 io.on("connection", (socket) => socketServer(socket));
 
 
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-}
 
 // ✅ Start server LAST
 const PORT = process.env.PORT || 4000;
