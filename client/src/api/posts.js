@@ -3,15 +3,9 @@ import { BASE_URL } from "../config";
 const getUserLikedPosts = async (likerId, token, query) => {
   try {
     const res = await fetch(
-      BASE_URL +
-        "api/posts/liked/" +
-        likerId +
-        "?" +
-        new URLSearchParams(query),
+      `${BASE_URL}/api/posts/liked/${likerId}?${new URLSearchParams(query)}`,
       {
-        headers: {
-          "x-access-token": token,
-        },
+        headers: { "x-access-token": token },
       }
     );
     return await res.json();
@@ -23,11 +17,9 @@ const getUserLikedPosts = async (likerId, token, query) => {
 const getPosts = async (token, query) => {
   try {
     const res = await fetch(
-      BASE_URL + "api/posts?" + new URLSearchParams(query),
+      `${BASE_URL}/api/posts?${new URLSearchParams(query)}`,
       {
-        headers: {
-          "x-access-token": token,
-        },
+        headers: { "x-access-token": token },
       }
     );
     return await res.json();
@@ -38,10 +30,8 @@ const getPosts = async (token, query) => {
 
 const getPost = async (postId, token) => {
   try {
-    const res = await fetch(BASE_URL + "api/posts/" + postId, {
-      headers: {
-        "x-access-token": token,
-      },
+    const res = await fetch(`${BASE_URL}/api/posts/${postId}`, {
+      headers: { "x-access-token": token },
     });
     return await res.json();
   } catch (err) {
@@ -52,15 +42,10 @@ const getPost = async (postId, token) => {
 const getUserLikes = async (postId, anchor) => {
   try {
     const res = await fetch(
-      BASE_URL +
-        "api/posts/like/" +
-        postId +
-        "/users?" +
-        new URLSearchParams({
-          anchor,
-        })
+      `${BASE_URL}/api/posts/like/${postId}/users?${new URLSearchParams({
+        anchor,
+      })}`
     );
-
     return await res.json();
   } catch (err) {
     console.log(err);
@@ -69,10 +54,9 @@ const getUserLikes = async (postId, anchor) => {
 
 const createPost = async (post, user) => {
   try {
-    const res = await fetch(BASE_URL + "api/posts", {
+    const res = await fetch(`${BASE_URL}/api/posts`, {
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
       },
@@ -86,10 +70,9 @@ const createPost = async (post, user) => {
 
 const updatePost = async (postId, user, data) => {
   try {
-    const res = await fetch(BASE_URL + "api/posts/" + postId, {
+    const res = await fetch(`${BASE_URL}/api/posts/${postId}`, {
       method: "PATCH",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
       },
@@ -103,7 +86,7 @@ const updatePost = async (postId, user, data) => {
 
 const deletePost = async (postId, user) => {
   try {
-    const res = await fetch(BASE_URL + "api/posts/" + postId, {
+    const res = await fetch(`${BASE_URL}/api/posts/${postId}`, {
       method: "DELETE",
       headers: {
         "x-access-token": user.token,
@@ -115,21 +98,19 @@ const deletePost = async (postId, user) => {
   }
 };
 
-const getComments = async (params) => {
+const getComments = async ({ id }) => {
   try {
-    const { id } = params;
-    const res = await fetch(BASE_URL + "api/comments/post/" + id);
+    const res = await fetch(`${BASE_URL}/api/comments/post/${id}`);
     return res.json();
   } catch (err) {
     console.log(err);
   }
 };
 
-const getUserComments = async (params) => {
+const getUserComments = async ({ id, query }) => {
   try {
-    const { id, query } = params;
     const res = await fetch(
-      BASE_URL + "api/comments/user/" + id + "?" + new URLSearchParams(query)
+      `${BASE_URL}/api/comments/user/${id}?${new URLSearchParams(query)}`
     );
     return res.json();
   } catch (err) {
@@ -137,13 +118,11 @@ const getUserComments = async (params) => {
   }
 };
 
-const createComment = async (comment, params, user) => {
+const createComment = async (comment, { id }, user) => {
   try {
-    const { id } = params;
-    const res = await fetch(BASE_URL + "api/comments/" + id, {
+    const res = await fetch(`${BASE_URL}/api/comments/${id}`, {
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
       },
@@ -157,10 +136,9 @@ const createComment = async (comment, params, user) => {
 
 const updateComment = async (commentId, user, data) => {
   try {
-    const res = await fetch(BASE_URL + "api/comments/" + commentId, {
+    const res = await fetch(`${BASE_URL}/api/comments/${commentId}`, {
       method: "PATCH",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         "x-access-token": user.token,
       },
@@ -174,7 +152,7 @@ const updateComment = async (commentId, user, data) => {
 
 const deleteComment = async (commentId, user) => {
   try {
-    const res = await fetch(BASE_URL + "api/comments/" + commentId, {
+    const res = await fetch(`${BASE_URL}/api/comments/${commentId}`, {
       method: "DELETE",
       headers: {
         "x-access-token": user.token,
@@ -188,7 +166,7 @@ const deleteComment = async (commentId, user) => {
 
 const likePost = async (postId, user) => {
   try {
-    const res = await fetch(BASE_URL + "api/posts/like/" + postId, {
+    const res = await fetch(`${BASE_URL}/api/posts/like/${postId}`, {
       method: "POST",
       headers: {
         "x-access-token": user.token,
@@ -202,7 +180,7 @@ const likePost = async (postId, user) => {
 
 const unlikePost = async (postId, user) => {
   try {
-    const res = await fetch(BASE_URL + "api/posts/like/" + postId, {
+    const res = await fetch(`${BASE_URL}/api/posts/like/${postId}`, {
       method: "DELETE",
       headers: {
         "x-access-token": user.token,

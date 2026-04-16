@@ -1,11 +1,8 @@
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
 import theme from "./theme";
 
 import PostView from "./components/views/PostView";
@@ -17,10 +14,20 @@ import ExploreView from "./components/views/ExploreView";
 import PrivateRoute from "./components/PrivateRoute";
 import SearchView from "./components/views/SearchView";
 import MessengerView from "./components/views/MessengerView";
-import { initiateSocketConnection } from "./helpers/socketHelper";
+
+import { initiateSocketConnection, disconnectSocket } from "./helpers/socketHelper";
 
 function App() {
-  initiateSocketConnection();
+
+  useEffect(() => {
+    // ✅ connect once when app loads
+    initiateSocketConnection();
+
+    // ✅ cleanup on unmount
+    return () => {
+      disconnectSocket();
+    };
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -29,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ExploreView />} />
           <Route path="/posts/:id" element={<PostView />} />
+
           <Route
             path="/posts/create"
             element={
@@ -37,6 +45,7 @@ function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/messenger"
             element={
@@ -45,6 +54,7 @@ function App() {
               </PrivateRoute>
             }
           />
+
           <Route path="/search" element={<SearchView />} />
           <Route path="/users/:id" element={<ProfileView />} />
           <Route path="/login" element={<LoginView />} />
