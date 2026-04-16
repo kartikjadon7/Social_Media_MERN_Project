@@ -18,7 +18,6 @@ import LikeBox from "./LikeBox";
 import PostContentBox from "./PostContentBox";
 import HorizontalStack from "./util/HorizontalStack";
 
-import {} from "react-icons/ai";
 import ContentUpdateEditor from "./ContentUpdateEditor";
 import Markdown from "./Markdown";
 
